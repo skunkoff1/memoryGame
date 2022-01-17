@@ -1,0 +1,78 @@
+/*palette couleurs
+Rich Black : #0C090D
+Battleship Grey : #868784
+Honey Yellow : #F7B32B
+Maximum Yellow Red : #FFC145
+Plump Purple : #624CAB
+Honeydew : #DFF8EB
+*/
+
+:root {
+    --black : #0C090D;
+    --grey : #868784;
+    --honey : #F7B32B;
+    --yellow : #FFC145;
+    --purple : #624CAB;
+    --aqua : #16E0BD;
+}
+
+body, html {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background-color: var(--black);
+    color: var(--honey);
+    font-size: 10px;
+}
+
+#container {
+    width:1200px;
+    margin: auto;
+}
+
+h1 {
+    font-size: 4rem;
+    text-align: center;
+}
+
+#buttonDiv {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.button {
+    width:100px;
+    height:50px;
+    background-color: var(--aqua);
+    color: var(--black);
+    display: flex;
+    justify-content : center;
+    align-items: center;
+    border-radius:5px;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+#gameContainer {
+    margin-top: 4rem;
+    background-color: var(--grey);
+    width: 1200px;
+    height: 600px;
+    border-radius: 5px;
+    border: 5px solid var(--yellow);
+    display: flex;
+    flex-basis: 130px 130px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+img {
+    margin:25px;
+    height : 100px;
+    cursor: pointer;
+}
+
+
+
+
+
