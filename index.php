@@ -30,16 +30,16 @@ if (isset($_POST['pseudo']) && isset($_POST['score']) && isset($_POST['level']))
     }
 }
 
-$impossibleTab = $db->prepare('SELECT pseudo,score FROM impossible ORDER BY score');
+$impossibleTab = $db->prepare('SELECT pseudo,score FROM impossible ORDER BY score LIMIT 10');
 $impossibleTab->execute(array());
 
-$easyTab = $db->prepare('SELECT pseudo,score FROM easy ORDER BY score');
+$easyTab = $db->prepare('SELECT pseudo,score FROM easy ORDER BY score LIMIT 10');
 $easyTab->execute(array());
 
-$mediumTab = $db->prepare('SELECT pseudo,score FROM medium ORDER BY score');
+$mediumTab = $db->prepare('SELECT pseudo,score FROM medium ORDER BY score LIMIT 10');
 $mediumTab->execute(array());
 
-$hardTab = $db->prepare('SELECT pseudo,score FROM hard ORDER BY score');
+$hardTab = $db->prepare('SELECT pseudo,score FROM hard ORDER BY score LIMIT 10');
 $hardTab->execute(array());
 
 
@@ -154,7 +154,7 @@ $hardTab->execute(array());
         </div>
         <div id="loseDiv">
             <h1 id="lose">Désolé, vous avez perdu</h1>
-            <div type="submit" id="restartButton">
+            <div type="button" id="restartButton2">
                 <p>relancer le jeu</p>
             </div>
         </div>

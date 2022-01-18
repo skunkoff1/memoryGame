@@ -49,10 +49,17 @@ function initGame(difficulty) {
                 level = 'impossible';
             }
         }
-        timer(60);
-        count = 59.99;
-        let displayClock = document.getElementById('clock');
-        displayClock.innerHTML = "60.00";
+        if (difficulty === 'hard') {
+            timer(120);
+            count = 119.99;
+            let displayClock = document.getElementById('clock');
+            displayClock.innerHTML = "120.00";
+        } else {
+            timer(60);
+            count = 59.99;
+            let displayClock = document.getElementById('clock');
+            displayClock.innerHTML = "60.00";
+        }
         shuffleArray(gameArray);
         displayGame(gameArray);
         win = gameArray.length / 2;
@@ -113,8 +120,7 @@ function check(tile, value) {
 
 function timer(time) {
     clock = setInterval(myClock, 10);
-    barTimer = setInterval(barTime, 60);
-    // check = setInterval(checkWin, 60);
+    barTimer = setInterval(barTime, time);
 }
 
 function myClock() {
@@ -138,8 +144,8 @@ function checkTime(width) {
         clearInterval(clock);
         clearInterval(barTimer);
         inGame = false;
-        let restart = document.getElementById('restartButton');
-        restartButton.addEventListener('click', () => {
+        let restart = document.getElementById('restartButton2');
+        restart.addEventListener('click', () => {
             window.location.reload();
         })
     }

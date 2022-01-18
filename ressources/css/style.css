@@ -120,7 +120,8 @@ input {
     margin-bottom: 30%;
 }
 
-#restartButton {
+#restartButton,
+#restartButton2 {
     background-color: var(--purple);
     width: 150px;
     height: 35px;
