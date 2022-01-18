@@ -167,9 +167,13 @@ input {
 
 .scoreLine {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     font-size: 16px;
     line-height: 6px;
+}
+
+.scoreLine p {
+    margin: 10px;
 }
 
 #scoreSep {
