@@ -8,15 +8,16 @@ Honeydew : #DFF8EB
 */
 
 :root {
-    --black : #0C090D;
-    --grey : #868784;
-    --honey : #F7B32B;
-    --yellow : #FFC145;
-    --purple : #624CAB;
-    --aqua : #16E0BD;
+    --black: #0C090D;
+    --grey: #868784;
+    --honey: #F7B32B;
+    --yellow: #FFC145;
+    --purple: #624CAB;
+    --aqua: #16E0BD;
 }
 
-body, html {
+body,
+html {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -26,7 +27,7 @@ body, html {
 }
 
 #container {
-    width:1200px;
+    width: 1200px;
     margin: auto;
 }
 
@@ -41,14 +42,14 @@ h1 {
 }
 
 .button {
-    width:100px;
-    height:50px;
+    width: 100px;
+    height: 50px;
     background-color: var(--aqua);
     color: var(--black);
     display: flex;
-    justify-content : center;
+    justify-content: center;
     align-items: center;
-    border-radius:5px;
+    border-radius: 5px;
     font-size: 2rem;
     cursor: pointer;
 }
@@ -67,12 +68,112 @@ h1 {
 }
 
 img {
-    margin:25px;
-    height : 100px;
+    margin: 25px;
+    height: 100px;
     cursor: pointer;
 }
 
+#timerDiv {
+    margin-top: 20px;
+    height: 50px;
+    width: 1200px;
+    border: 5px solid var(--yellow);
+    border-radius: 5px;
+}
 
+#timer {
+    height: 50px;
+    width: 1200px;
+    background-color: var(--purple);
+}
 
+#winDiv,
+#loseDiv {
+    left: 35%;
+    top: 40%;
+    width: 500px;
+    height: 200px;
+    position: absolute;
+    background-color: var(--honey);
+    display: block;
+    color: var(--black);
+    border: 5px solid var(--black);
+    border-radius: 5px;
+    display: none;
+}
 
+input {
+    margin-left: 30px;
+    font-size: 2rem;
+    border: 5px solid var(--black);
+}
 
+#scoreInput,
+#levelInput {
+    display: none;
+    height: 0;
+}
+
+#score {
+    font-size: 2rem;
+    margin-left: 30px;
+    margin-bottom: 30%;
+}
+
+#restartButton {
+    background-color: var(--purple);
+    width: 150px;
+    height: 35px;
+    font-size: 2rem;
+    position: absolute;
+    left: 65%;
+    bottom: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid var(--black);
+    cursor: pointer;
+}
+
+#clockDiv {
+    height: 40px;
+    width: 200px;
+    border: 5px solid var(--honey);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#clock {
+    color: var(--honey);
+    font-size: 3.5rem;
+}
+
+#hiscore {
+    display: flex;
+    justify-content: space-around;
+}
+
+.scorebox {
+    display: flex;
+    width: 25%;
+}
+
+#scoreDiv {
+    width: 100%;
+}
+
+.scoreLine {
+    display: flex;
+    justify-content: space-around;
+    font-size: 16px;
+    line-height: 6px;
+}
+
+#scoreSep {
+    background-color: var(--honey);
+    width: 5px;
+    height: 90%;
+    margin: 5% 0;
+}

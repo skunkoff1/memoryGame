@@ -1,9 +1,17 @@
 let gameContainer = document.getElementById("gameContainer");
 let tileChecked = '';
-let isChecked = 0; 
+let isChecked = false;
 let pairFind = 0;
 let win = 0;
-let tempTile = null;       
+let tempTile = null;
+let inGame = false;
+let count = 0;
+let clock;
+let barTimer;
+let timerDiv = document.getElementById("timer");
+let width = 1200;
+let level = '';
+
 
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -13,34 +21,47 @@ function shuffleArray(array) {
 }
 
 function initGame(difficulty) {
-    let gameArray = [];
-    if(difficulty === 'easy') {
-        for(let i=0; i<8; i++) {
-            gameArray.push(i);
-            gameArray.push(i);
-        }        
+    if (inGame === false) {
+        inGame = true;
+        let gameArray = [];
+        if (difficulty === 'easy') {
+            for (let i = 0; i < 8; i++) {
+                gameArray.push(i);
+                gameArray.push(i);
+                level = 'easy';
+            }
+        } else if (difficulty === 'medium') {
+            for (let i = 0; i < 12; i++) {
+                gameArray.push(i);
+                gameArray.push(i);
+                level = 'medium';
+            }
+        } else if (difficulty === 'hard') {
+            for (let i = 0; i < 16; i++) {
+                gameArray.push(i);
+                gameArray.push(i);
+                level = 'hard';
+            }
+        } else if (difficulty === 'impossible') {
+            for (let i = 0; i < 1; i++) {
+                gameArray.push(i);
+                gameArray.push(i);
+                level = 'impossible';
+            }
+        }
+        timer(60);
+        count = 59.99;
+        let displayClock = document.getElementById('clock');
+        displayClock.innerHTML = "60.00";
         shuffleArray(gameArray);
+        displayGame(gameArray);
+        win = gameArray.length / 2;
     }
-    else if(difficulty === 'medium') {
-        for(let i=0; i<12; i++) {
-            gameArray.push(i);
-            gameArray.push(i);
-        }        
-        shuffleArray(gameArray);
-    }
-    else if(difficulty === 'hard') {        
-        for(let i=0; i<18; i++) {
-            gameArray.push(i);
-            gameArray.push(i);
-        }        
-        shuffleArray(gameArray);
-    }
-    displayGame(gameArray);
-    win = gameArray.length;    
+
 }
 
 function displayGame(array) {
-    for(let i=0; i<array.length; i++) {
+    for (let i = 0; i < array.length; i++) {
         let tile = document.createElement('img');
         tile.src = "./ressources/images/tile" + array[i] + ".png";
         gameContainer.appendChild(tile);
@@ -52,34 +73,74 @@ function displayGame(array) {
 }
 
 function check(tile, value) {
-    if(isChecked === 0) {
-        isChecked = 1;
+    if (isChecked === false) {
+        isChecked = true;
         tile.style.filter = "brightness(1)";
         tileChecked = value;
         tempTile = tile;
-    }
-    else if(isChecked === 0 && tempTile != null) {
-        return;
-    }
-    else {        
+    } else if (isChecked === true && tempTile != null) {
         tile.style.filter = "brightness(1)";
-        if(value === tileChecked) {
-            isChecked = 0;
+        if (value === tileChecked) {
+            isChecked = false;
             pairFind++;
-            if(pairFind === win) {
-                alert("vous avez gagné");
+            tempTile = null;
+            if (pairFind === win) {
+                clearInterval(clock);
+                clearInterval(barTimer);
+                let div = document.getElementById('winDiv');
+                div.style.display = "block";
+                let score = document.getElementById('score');
+                let postScore = document.getElementById('scoreInput');
+                postScore.value = (60 - count).toFixed(2) + "s";
+                let postLevel = document.getElementById('levelInput');
+                postLevel.value = level;
+                score.innerHTML += (60 - count).toFixed(2) + "s";
+                inGame = false;
             }
-        }
-        else {
+        } else {
+            let temp = tempTile;
+            tempTile = null;
             setTimeout(() => {
-                isChecked = 0;
-                tile.style.filter = "brightness(0)"; 
-                tempTile.style.filter = "brightness(0)"; 
-                tempTile= null;
-            }, 1500);
+                tile.style.filter = "brightness(0)";
+                temp.style.filter = "brightness(0)";
+                tempTile = null;
+                isChecked = false;
+            }, 1000);
         }
     }
 
-    
-    
+}
+
+function timer(time) {
+    clock = setInterval(myClock, 10);
+    barTimer = setInterval(barTime, 60);
+    // check = setInterval(checkWin, 60);
+}
+
+function myClock() {
+    let displayClock = document.getElementById('clock');
+    displayClock.innerHTML = count.toFixed(2);
+    count -= 0.01;
+}
+
+function barTime() {
+    width -= 1.2;
+    timerDiv.style.width = width + "px";
+    checkTime(width);
+}
+
+function checkTime(width) {
+    if (width < 1) {
+        let div = document.getElementById('loseDiv');
+        div.style.display = "block";
+        let displayClock = document.getElementById('clock');
+        displayClock.innerHTML = "0s";
+        clearInterval(clock);
+        clearInterval(barTimer);
+        inGame = false;
+        let restart = document.getElementById('restartButton');
+        restartButton.addEventListener('click', () => {
+            window.location.reload();
+        })
+    }
 }
