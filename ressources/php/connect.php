@@ -1,9 +1,9 @@
 <?php
 
-$host_name = 'localhost:3306';
-$database = 'memory';
-$user_name = 'root';
-$password = 'mdp';
+$host_name = 'db5006349319.hosting-data.io';
+$database = 'dbs5287912';
+$user_name = 'dbu1635733';
+$password = 'Damabiah777!';
 $dbh = null;
 
 try {

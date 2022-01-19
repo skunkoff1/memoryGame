@@ -98,11 +98,14 @@ function check(tile, value) {
                 div.style.display = "block";
                 let score = document.getElementById('score');
                 let postScore = document.getElementById('scoreInput');
-                postScore.value = (60 - count).toFixed(2) + "s";
+                if (level == "hard") {
+                    postScore.value = (120 - count).toFixed(2) + "s";
+                } else {
+                    postScore.value = (60 - count).toFixed(2) + "s";
+                }
                 let postLevel = document.getElementById('levelInput');
                 postLevel.value = level;
-                score.innerHTML += (60 - count).toFixed(2) + "s";
-                inGame = false;
+                score.innerHTML += postScore.value + "s";
             }
         } else {
             let temp = tempTile;
@@ -149,4 +152,8 @@ function checkTime(width) {
             window.location.reload();
         })
     }
+}
+
+function restarGame() {
+    inGame = false;
 }
