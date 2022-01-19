@@ -24,6 +24,7 @@ html {
     background-color: var(--black);
     color: var(--honey);
     font-size: 10px;
+    user-select: none;
 }
 
 #container {
