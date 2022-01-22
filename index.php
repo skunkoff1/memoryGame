@@ -56,6 +56,7 @@ $hardTab->execute(array());
 </head>
 
 <body>
+    <?php echo'
     <div id="container">
         <header>
             <div id="title">
@@ -65,10 +66,10 @@ $hardTab->execute(array());
                 <div id="clockDiv">
                     <p id="clock">00.00</p>
                 </div>
-                <div class="button" onclick="initGame('easy')">Easy</div>
-                <div class="button" onclick="initGame('medium')">Medium</div>
-                <div class="button" onclick="initGame('hard')">Hard</div>
-                <div class="button" onclick="initGame('impossible')">Impossible</div>
+                <div class="button" onclick="initGame(\'easy\')">Easy</div>
+                <div class="button" onclick="initGame(\'medium\')">Medium</div>
+                <div class="button" onclick="initGame(\'hard\')">Hard</div>
+                <div class="button" onclick="initGame(\'impossible\')">Impossible</div>
             </div>
         </header>
         <div id="gameContainer">
@@ -82,6 +83,7 @@ $hardTab->execute(array());
             <div class="scorebox">
                 <div id="scoreDiv">
                     <h1>Easy</h1>
+                    ';?>
                     <?php
                     while ($data = $easyTab->fetch()) {
                         echo '<div class="scoreLine"><p>' . $data['pseudo'] . '</p><p>' . $data['score'] . '</p></div> ';
@@ -159,6 +161,7 @@ $hardTab->execute(array());
             </div>
         </div>
     </div>
+    
     <script src="./ressources/js/script.js"></script>
 </body>
 

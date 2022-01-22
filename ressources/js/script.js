@@ -12,6 +12,12 @@ let timerDiv = document.getElementById("timer");
 let width = 1200;
 let level = '';
 
+document.addEventListener('dblclick', function(event) {
+    event.preventDefault();
+    event.stopPropagation()
+  }, true //capturing phase!!
+);
+
 
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -85,7 +91,10 @@ function check(tile, value) {
         tile.style.filter = "brightness(1)";
         tileChecked = value;
         tempTile = tile;
-    } else if (isChecked === true && tempTile != null) {
+    }else if(isChecked == true && tempTile == tile) {
+
+    }
+    else if (isChecked === true && tempTile != null) {
         tile.style.filter = "brightness(1)";
         if (value === tileChecked) {
             isChecked = false;
